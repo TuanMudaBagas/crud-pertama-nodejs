@@ -1,0 +1,51 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <a href="/create" class="btn btn-primary">
+      <i class="fas fa-plus"></i> Create Students</a
+    >
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Kelas</th>
+            <th>Umur</th>
+            <th>Warga Negara</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for( let i = 0; i < siswa.length; i++ ) { %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= siswa[i].name %></td>
+            <td><%= siswa[i].clas %></td>
+            <td><%= siswa[i].age %></td>
+            <td><%= siswa[i].country %></td>
+            <td>
+              <form
+                method="POST"
+                action="/remove/<%= siswa[i].id %>?_method=DELETE"
+              >
+                <a href="" class="btn btn-sm btn-primary">Edit</a>
+                <button type="submit" class="btn btn-sm btn-danger">
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
